@@ -1,5 +1,13 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Clean directory routes work on GitHub Pages. When files are opened directly,
+// point those same links at their index files so local navigation still works.
+if (window.location.protocol === 'file:') {
+  document.querySelectorAll('a[href="websites/"]').forEach((link) => link.setAttribute('href', 'websites/index.html'));
+  document.querySelectorAll('a[href="../"]').forEach((link) => link.setAttribute('href', '../index.html'));
+  document.querySelectorAll('a[href="./"]').forEach((link) => link.setAttribute('href', 'index.html'));
+}
+
 let lastScrollY = window.scrollY;
 let scrollDirection = 'down';
 

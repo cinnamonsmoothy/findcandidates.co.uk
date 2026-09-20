@@ -669,11 +669,16 @@ body.brief-open{overflow:hidden}
   .preview-cards i{height:52px}
   .preview-note{right:7px}
   .service-statement h2,.service-section-head h2,.website-price-copy h2,.service-final h2{font-size:43px}
+  .service-statement h2,#included .service-section-head h2,.sheet-sync-head h2,.website-price-copy h2,.service-final h2{white-space:nowrap}
+  .service-statement h2{font-size:min(43px,10.3vw)}
+  #included .service-section-head h2{font-size:min(43px,6.8vw)}
+  .sheet-sync-head h2{font-size:min(43px,8.8vw)}
+  .website-price-copy h2{font-size:min(43px,10vw)}
+  .service-final h2{font-size:min(43px,7.8vw)}
   .service-process-inner h2 .service-process-title-line:first-child{font-size:.82em}
   .service-feature-grid{grid-template-columns:1fr;margin-top:55px}
   .service-feature{min-height:220px}
   .sheet-sync-head{margin-bottom:45px}
-  .sheet-sync-head h2{font-size:43px}
   .sheet-sync-head p{font-size:14px}
   .sync-panel{height:320px;border-radius:20px}
   .sheet-panel{height:312px}

@@ -55,10 +55,16 @@ const closeBrief = () => {
   } else {
     briefDialog.removeAttribute('open');
   }
+  if (window.location.hash === '#brief-dialog') {
+    history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+  }
   document.body.classList.remove('brief-open');
 };
 
-briefClose?.addEventListener('click', closeBrief);
+briefClose?.addEventListener('click', (event) => {
+  event.preventDefault();
+  closeBrief();
+});
 briefDialog?.addEventListener('click', (event) => {
   if (event.target === briefDialog) closeBrief();
 });

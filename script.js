@@ -81,14 +81,18 @@ briefDialog?.addEventListener('close', () => document.body.classList.remove('bri
 briefForm?.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = new FormData(briefForm);
-  const lines = [
-    "Hi, I'd like to get my first 10 CVs free.",
-    '',
-    `Role: ${data.get('role') || 'Not specified'}`,
-    `Location: ${data.get('location') || 'Not specified'}`,
-    `Salary/rate: ${data.get('salary') || 'Not specified'}`,
-    `Type: ${data.get('type') || 'Not specified'}`
-  ];
+  const hasDetails = [...data.values()].some((value) => String(value).trim());
+  const lines = ["Hi, I'd like to get my first 10 CVs free."];
+
+  if (hasDetails) {
+    lines.push(
+      '',
+      `Role: ${data.get('role') || 'Not specified'}`,
+      `Location: ${data.get('location') || 'Not specified'}`,
+      `Salary/rate: ${data.get('salary') || 'Not specified'}`,
+      `Type: ${data.get('type') || 'Not specified'}`
+    );
+  }
   const whatsappUrl = `https://api.whatsapp.com/send?phone=447345208104&text=${encodeURIComponent(lines.join('\n'))}`;
   window.open(whatsappUrl, '_blank', 'noopener');
   closeBrief();

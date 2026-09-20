@@ -423,7 +423,9 @@ h1{font-size:clamp(76px,9.45vw,136px)}
 .brief-heading h2 em{color:var(--blue);font-style:normal}
 .brief-heading p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
 .brief-form{display:grid;gap:17px;padding:0 46px 42px}
-.brief-form label{display:grid;gap:8px;color:#465261;font-size:12px;font-weight:700}
+.brief-form label{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;color:#465261;font-size:12px;font-weight:700}
+.brief-form label>span{justify-self:end;grid-row:1;align-self:center;color:#9aa3ad;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.brief-form label>input,.brief-form label>select,.brief-form label>textarea{grid-column:1/-1}
 .brief-form input,.brief-form select,.brief-form textarea{width:100%;border:1px solid #dfe6ec;border-radius:13px;background:#fbfcfd;color:var(--ink-strong);font:500 14px/1.4 var(--font-primary);outline:none;transition:border-color .2s,box-shadow .2s}
 .brief-form input,.brief-form select{height:48px;padding:0 14px}
 .brief-form textarea{min-height:84px;padding:13px 14px;resize:vertical}
@@ -442,6 +444,7 @@ body.brief-open{overflow:hidden}
   .brief-heading p{font-size:11px;line-height:1.4}
   .brief-form{gap:10px;padding:0 18px 18px}
   .brief-form label{gap:5px;font-size:10px}
+  .brief-form label>span{font-size:7px}
   .brief-form input,.brief-form select{height:42px;padding:0 11px;font-size:12px;border-radius:11px}
   .brief-form textarea{min-height:58px;height:58px;padding:10px 11px;font-size:12px;border-radius:11px;resize:none}
   .brief-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px}

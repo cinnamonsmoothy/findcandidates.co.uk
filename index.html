@@ -279,16 +279,16 @@
       <div class="brief-heading">
         <span>30-second brief</span>
         <h2 id="brief-title">Tell us who<br><em>you're looking for.</em></h2>
-        <p>Give us the essentials. We'll continue with you on WhatsApp.</p>
+        <p>Add whatever you know, or skip the form and continue straight to WhatsApp. Every field is optional.</p>
       </div>
       <form class="brief-form" id="brief-form">
-        <label>Job title<input name="role" type="text" autocomplete="organization-title" placeholder="e.g. Practice Nurse" required></label>
-        <label>Location<input name="location" type="text" autocomplete="address-level2" placeholder="e.g. Manchester" required></label>
+        <label>Job title <span>Optional</span><input name="role" type="text" autocomplete="organization-title" placeholder="e.g. Practice Nurse"></label>
+        <label>Location <span>Optional</span><input name="location" type="text" autocomplete="address-level2" placeholder="e.g. Manchester"></label>
         <div class="brief-row">
-          <label>Salary or rate<input name="salary" type="text" placeholder="e.g. £42,000"></label>
-          <label>Employment type<select name="type" required><option value="" selected disabled>Select one</option><option>Permanent</option><option>Contract</option><option>Temporary</option><option>Part-time</option></select></label>
+          <label>Salary/rate <span>Optional</span><input name="salary" type="text" placeholder="e.g. £42,000"></label>
+          <label>Type <span>Optional</span><select name="type"><option value="" selected>Not specified</option><option>Permanent</option><option>Contract</option><option>Temporary</option><option>Part-time</option></select></label>
         </div>
-        <label>Must-haves<textarea name="mustHaves" rows="3" placeholder="e.g. EMIS, smears, immunisations" required></textarea></label>
+        <label>Must-haves <span>Optional</span><textarea name="mustHaves" rows="3" placeholder="e.g. EMIS, smears, immunisations"></textarea></label>
         <button class="button primary brief-submit" type="submit">Continue on WhatsApp</button>
         <small>No commitment. Your first 10 CVs are free.</small>
       </form>

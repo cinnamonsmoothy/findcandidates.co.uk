@@ -45,7 +45,6 @@ document.querySelectorAll('[data-brief-cta]').forEach((cta) => {
       briefDialog.setAttribute('open', '');
     }
     document.body.classList.add('brief-open');
-    requestAnimationFrame(() => briefForm.elements.role.focus());
   });
 });
 
@@ -76,11 +75,11 @@ briefForm?.addEventListener('submit', (event) => {
   const lines = [
     "Hi, I'd like to get my first 10 CVs free.",
     '',
-    `Role: ${data.get('role')}`,
-    `Location: ${data.get('location')}`,
+    `Role: ${data.get('role') || 'Not specified'}`,
+    `Location: ${data.get('location') || 'Not specified'}`,
     `Salary/rate: ${data.get('salary') || 'Not specified'}`,
-    `Type: ${data.get('type')}`,
-    `Must-haves: ${data.get('mustHaves')}`
+    `Type: ${data.get('type') || 'Not specified'}`,
+    `Must-haves: ${data.get('mustHaves') || 'Not specified'}`
   ];
   const whatsappUrl = `https://api.whatsapp.com/send?phone=447345208104&text=${encodeURIComponent(lines.join('\n'))}`;
   window.open(whatsappUrl, '_blank', 'noopener');

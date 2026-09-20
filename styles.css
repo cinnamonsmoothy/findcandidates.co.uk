@@ -434,9 +434,23 @@ h1{font-size:clamp(76px,9.45vw,136px)}
 body.brief-open{overflow:hidden}
 
 @media(max-width:560px){
-  .brief-dialog{border-radius:23px}
-  .brief-heading{padding:35px 24px 22px}
-  .brief-heading h2{font-size:36px}
-  .brief-form{padding:0 24px 30px}
-  .brief-row{grid-template-columns:1fr}
+  .brief-dialog{width:calc(100% - 16px);max-height:calc(100svh - 12px);border-radius:22px}
+  .brief-close{top:12px;right:12px;width:34px;height:34px;font-size:21px;line-height:30px}
+  .brief-heading{padding:22px 18px 13px}
+  .brief-heading>span{padding:6px 9px;font-size:8px}
+  .brief-heading h2{margin:12px 42px 7px 0;font-size:30px;line-height:1}
+  .brief-heading p{font-size:11px;line-height:1.4}
+  .brief-form{gap:10px;padding:0 18px 18px}
+  .brief-form label{gap:5px;font-size:10px}
+  .brief-form input,.brief-form select{height:42px;padding:0 11px;font-size:12px;border-radius:11px}
+  .brief-form textarea{min-height:58px;height:58px;padding:10px 11px;font-size:12px;border-radius:11px;resize:none}
+  .brief-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:9px}
+  .brief-submit{height:49px;margin-top:1px;font-size:13px}
+  .brief-form small{font-size:9px}
+}
+
+@media(max-width:360px),(max-height:680px){
+  .brief-heading>span,.brief-heading p{display:none}
+  .brief-heading{padding-top:18px}
+  .brief-heading h2{margin-top:0;font-size:27px}
 }

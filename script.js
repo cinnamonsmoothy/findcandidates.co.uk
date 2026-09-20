@@ -34,6 +34,15 @@ document.querySelectorAll('details').forEach((item) => {
 const briefDialog = document.getElementById('brief-dialog');
 const briefForm = document.getElementById('brief-form');
 const briefClose = briefDialog?.querySelector('.brief-close');
+const briefSubmit = briefForm?.querySelector('.brief-submit');
+
+const updateBriefSubmitLabel = () => {
+  const hasDetails = [...new FormData(briefForm).values()].some((value) => String(value).trim());
+  briefSubmit.textContent = hasDetails ? 'Continue on WhatsApp' : 'Skip';
+};
+
+briefForm?.addEventListener('input', updateBriefSubmitLabel);
+briefForm?.addEventListener('change', updateBriefSubmitLabel);
 
 document.querySelectorAll('[data-brief-cta]').forEach((cta) => {
   cta.addEventListener('click', (event) => {
@@ -78,8 +87,7 @@ briefForm?.addEventListener('submit', (event) => {
     `Role: ${data.get('role') || 'Not specified'}`,
     `Location: ${data.get('location') || 'Not specified'}`,
     `Salary/rate: ${data.get('salary') || 'Not specified'}`,
-    `Type: ${data.get('type') || 'Not specified'}`,
-    `Must-haves: ${data.get('mustHaves') || 'Not specified'}`
+    `Type: ${data.get('type') || 'Not specified'}`
   ];
   const whatsappUrl = `https://api.whatsapp.com/send?phone=447345208104&text=${encodeURIComponent(lines.join('\n'))}`;
   window.open(whatsappUrl, '_blank', 'noopener');

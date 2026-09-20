@@ -2,7 +2,7 @@
 
 ## Lucide Icons
 
-The inline icons used in the hero and CV-quality section are from [Lucide](https://lucide.dev/).
+The inline icons used in the heroes, feature cards and CV-quality section are from [Lucide](https://lucide.dev/).
 
 ISC License
 

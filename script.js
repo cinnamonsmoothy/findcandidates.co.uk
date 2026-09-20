@@ -36,6 +36,10 @@ const briefForm = document.getElementById('brief-form');
 const briefClose = briefDialog?.querySelector('.brief-close');
 const briefSubmit = briefForm?.querySelector('.brief-submit');
 
+// Keep the brief available for later, but send every CTA straight to WhatsApp while disabled.
+const BRIEF_ENABLED = false;
+const directWhatsAppUrl = `https://api.whatsapp.com/send?phone=447345208104&text=${encodeURIComponent("Hi, I'd like to get my first 10 CVs free.")}`;
+
 const updateBriefSubmitLabel = () => {
   const hasDetails = [...new FormData(briefForm).values()].some((value) => String(value).trim());
   briefSubmit.textContent = hasDetails ? 'Continue on WhatsApp' : 'Skip';
@@ -45,6 +49,13 @@ briefForm?.addEventListener('input', updateBriefSubmitLabel);
 briefForm?.addEventListener('change', updateBriefSubmitLabel);
 
 document.querySelectorAll('[data-brief-cta]').forEach((cta) => {
+  if (!BRIEF_ENABLED) {
+    cta.setAttribute('href', directWhatsAppUrl);
+    cta.setAttribute('target', '_blank');
+    cta.setAttribute('rel', 'noopener');
+    return;
+  }
+
   cta.addEventListener('click', (event) => {
     if (!briefDialog) return;
     event.preventDefault();

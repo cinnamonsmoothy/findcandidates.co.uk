@@ -23,7 +23,7 @@
           <span>WhatsApp us</span>
         </a>
       </div>
-      <a class="nav-cta" href="https://api.whatsapp.com/send?phone=447345208104&amp;text=Hi%2C%20I%27m%20interested%20in%20getting%20my%20first%2010%20CVs%20free." target="_blank" rel="noopener">Get started</a>
+      <a class="nav-cta" data-brief-cta href="https://api.whatsapp.com/send?phone=447345208104&amp;text=Hi%2C%20I%27m%20interested%20in%20getting%20my%20first%2010%20CVs%20free." target="_blank" rel="noopener">Get started</a>
     </nav>
   </header>
 
@@ -66,7 +66,7 @@
         <h1><span class="hero-line hero-line-one">Send us the job.</span><span class="hero-line hero-line-two">We'll find the</span><span class="hero-line hero-line-three">candidates.</span></h1>
         <p class="hero-sub">Get 12–15 recent, relevant and rigorously vetted CVs for every role, checked against your brief by a dedicated sourcer and typically delivered within 1 hour.</p>
         <div class="hero-actions">
-          <a class="button primary hero-cta" href="https://api.whatsapp.com/send?phone=447345208104&amp;text=Hi%2C%20I%27m%20interested%20in%20getting%20my%20first%2010%20CVs%20free." target="_blank" rel="noopener">Get First 10 CVs Free</a>
+          <a class="button primary hero-cta" data-brief-cta href="https://api.whatsapp.com/send?phone=447345208104&amp;text=Hi%2C%20I%27m%20interested%20in%20getting%20my%20first%2010%20CVs%20free." target="_blank" rel="noopener">Get First 10 CVs Free</a>
         </div>
       </div>
     </section>
@@ -115,7 +115,7 @@
         </div>
       </div>
       <p class="big-line reveal">Less money. Less work. <span>It's a no-brainer.</span></p>
-      <div class="comparison-action reveal"><a class="button primary comparison-cta" href="https://api.whatsapp.com/send?phone=447345208104&amp;text=Hi%2C%20I%27m%20interested%20in%20getting%20my%20first%2010%20CVs%20free." target="_blank" rel="noopener">Get Your First 10 CVs Free</a></div>
+      <div class="comparison-action reveal"><a class="button primary comparison-cta" data-brief-cta href="https://api.whatsapp.com/send?phone=447345208104&amp;text=Hi%2C%20I%27m%20interested%20in%20getting%20my%20first%2010%20CVs%20free." target="_blank" rel="noopener">Get Your First 10 CVs Free</a></div>
     </section>
 
     <section class="agency section reveal">
@@ -214,7 +214,7 @@
           <li><span>✓</span> Recent, relevant and checked against your must-haves</li>
           <li><span>✓</span> No CV database licence required</li>
         </ul>
-        <a class="button primary full" href="https://api.whatsapp.com/send?phone=447345208104&amp;text=Hi%2C%20I%27m%20interested%20in%20getting%20my%20first%2010%20CVs%20free." target="_blank" rel="noopener">Get started <span>→</span></a>
+        <a class="button primary full" data-brief-cta href="https://api.whatsapp.com/send?phone=447345208104&amp;text=Hi%2C%20I%27m%20interested%20in%20getting%20my%20first%2010%20CVs%20free." target="_blank" rel="noopener">Get started <span>→</span></a>
       </div>
     </section>
 
@@ -265,7 +265,7 @@
     <section class="final-cta section reveal">
       <h2>Got a vacancy?<br><span>We'll get you CVs in an hour.</span></h2>
       <p>Send us the job. A shortlist of recent, relevant and rigorously vetted CVs could be in your inbox within the hour.</p>
-      <a class="button primary" href="https://api.whatsapp.com/send?phone=447345208104&amp;text=Hi%2C%20I%27m%20interested%20in%20getting%20my%20first%2010%20CVs%20free." target="_blank" rel="noopener">Get 10 free CVs now</a>
+      <a class="button primary" data-brief-cta href="https://api.whatsapp.com/send?phone=447345208104&amp;text=Hi%2C%20I%27m%20interested%20in%20getting%20my%20first%2010%20CVs%20free." target="_blank" rel="noopener">Get 10 free CVs now</a>
     </section>
     <a class="chat-float" href="https://api.whatsapp.com/send?phone=447345208104&amp;text=Hi%2C%20I%27m%20interested%20in%20getting%20my%20first%2010%20CVs%20free." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
       <span class="chat-icon" aria-hidden="true">
@@ -273,6 +273,26 @@
       </span>
       <span class="chat-copy"><strong>WhatsApp us</strong><small>Typically replies quickly</small></span>
     </a>
+
+    <dialog class="brief-dialog" id="brief-dialog" aria-labelledby="brief-title">
+      <button class="brief-close" type="button" aria-label="Close brief form">×</button>
+      <div class="brief-heading">
+        <span>30-second brief</span>
+        <h2 id="brief-title">Tell us who<br><em>you're looking for.</em></h2>
+        <p>Give us the essentials. We'll continue with you on WhatsApp.</p>
+      </div>
+      <form class="brief-form" id="brief-form">
+        <label>Job title<input name="role" type="text" autocomplete="organization-title" placeholder="e.g. Practice Nurse" required></label>
+        <label>Location<input name="location" type="text" autocomplete="address-level2" placeholder="e.g. Manchester" required></label>
+        <div class="brief-row">
+          <label>Salary or rate<input name="salary" type="text" placeholder="e.g. £42,000"></label>
+          <label>Employment type<select name="type" required><option value="" selected disabled>Select one</option><option>Permanent</option><option>Contract</option><option>Temporary</option><option>Part-time</option></select></label>
+        </div>
+        <label>Must-haves<textarea name="mustHaves" rows="3" placeholder="e.g. EMIS, smears, immunisations" required></textarea></label>
+        <button class="button primary brief-submit" type="submit">Continue on WhatsApp</button>
+        <small>No commitment. Your first 10 CVs are free.</small>
+      </form>
+    </dialog>
   </main>
 
   <footer>

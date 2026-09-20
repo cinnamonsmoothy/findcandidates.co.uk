@@ -411,3 +411,31 @@ h1{font-size:clamp(76px,9.45vw,136px)}
   .hero.reveal.visible .hero-line,.hero.reveal.visible .hero-sub,.hero.reveal.visible .hero-actions{animation:none}
   .hero-float{animation:none}
 }
+
+/* Lightweight vacancy brief before WhatsApp */
+.brief-dialog{width:min(620px,calc(100% - 30px));max-height:calc(100svh - 30px);padding:0;border:0;border-radius:28px;background:#fff;color:var(--ink-strong);box-shadow:0 28px 90px rgba(24,39,55,.24);overflow:auto}
+.brief-dialog::backdrop{background:rgba(20,31,43,.42);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.brief-close{position:absolute;top:18px;right:18px;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:#fff;color:#66717e;font:400 24px/1 var(--font-primary);cursor:pointer}
+.brief-heading{padding:42px 46px 25px}
+.brief-heading>span{display:inline-flex;padding:8px 11px;border-radius:999px;background:var(--blue-soft);color:var(--blue-deep);font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.brief-heading h2{margin:19px 0 13px;font-size:clamp(34px,5vw,48px);font-style:normal;font-weight:750;letter-spacing:-.06em;line-height:1.03}
+.brief-heading h2 em{color:var(--blue);font-style:normal}
+.brief-heading p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.brief-form{display:grid;gap:17px;padding:0 46px 42px}
+.brief-form label{display:grid;gap:8px;color:#465261;font-size:12px;font-weight:700}
+.brief-form input,.brief-form select,.brief-form textarea{width:100%;border:1px solid #dfe6ec;border-radius:13px;background:#fbfcfd;color:var(--ink-strong);font:500 14px/1.4 var(--font-primary);outline:none;transition:border-color .2s,box-shadow .2s}
+.brief-form input,.brief-form select{height:48px;padding:0 14px}
+.brief-form textarea{min-height:84px;padding:13px 14px;resize:vertical}
+.brief-form input:focus,.brief-form select:focus,.brief-form textarea:focus{border-color:#8dcef4;box-shadow:0 0 0 4px var(--blue-soft)}
+.brief-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.brief-submit{width:100%;margin-top:3px;border:0;cursor:pointer}
+.brief-form small{text-align:center;color:#89929d;font-size:10px}
+body.brief-open{overflow:hidden}
+
+@media(max-width:560px){
+  .brief-dialog{border-radius:23px}
+  .brief-heading{padding:35px 24px 22px}
+  .brief-heading h2{font-size:36px}
+  .brief-form{padding:0 24px 30px}
+  .brief-row{grid-template-columns:1fr}
+}

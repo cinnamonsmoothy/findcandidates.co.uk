@@ -30,3 +30,45 @@ document.querySelectorAll('details').forEach((item) => {
     });
   });
 });
+
+const briefDialog = document.getElementById('brief-dialog');
+const briefForm = document.getElementById('brief-form');
+const briefClose = briefDialog?.querySelector('.brief-close');
+
+document.querySelectorAll('[data-brief-cta]').forEach((cta) => {
+  cta.addEventListener('click', (event) => {
+    if (!briefDialog?.showModal) return;
+    event.preventDefault();
+    briefDialog.showModal();
+    document.body.classList.add('brief-open');
+    requestAnimationFrame(() => briefForm.elements.role.focus());
+  });
+});
+
+const closeBrief = () => {
+  briefDialog.close();
+  document.body.classList.remove('brief-open');
+};
+
+briefClose?.addEventListener('click', closeBrief);
+briefDialog?.addEventListener('click', (event) => {
+  if (event.target === briefDialog) closeBrief();
+});
+briefDialog?.addEventListener('close', () => document.body.classList.remove('brief-open'));
+
+briefForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const data = new FormData(briefForm);
+  const lines = [
+    "Hi, I'd like to get my first 10 CVs free.",
+    '',
+    `Role: ${data.get('role')}`,
+    `Location: ${data.get('location')}`,
+    `Salary/rate: ${data.get('salary') || 'Not specified'}`,
+    `Type: ${data.get('type')}`,
+    `Must-haves: ${data.get('mustHaves')}`
+  ];
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=447345208104&text=${encodeURIComponent(lines.join('\n'))}`;
+  window.open(whatsappUrl, '_blank', 'noopener');
+  closeBrief();
+});

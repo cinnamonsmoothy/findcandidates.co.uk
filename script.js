@@ -37,16 +37,24 @@ const briefClose = briefDialog?.querySelector('.brief-close');
 
 document.querySelectorAll('[data-brief-cta]').forEach((cta) => {
   cta.addEventListener('click', (event) => {
-    if (!briefDialog?.showModal) return;
+    if (!briefDialog) return;
     event.preventDefault();
-    briefDialog.showModal();
+    if (typeof briefDialog.showModal === 'function') {
+      briefDialog.showModal();
+    } else {
+      briefDialog.setAttribute('open', '');
+    }
     document.body.classList.add('brief-open');
     requestAnimationFrame(() => briefForm.elements.role.focus());
   });
 });
 
 const closeBrief = () => {
-  briefDialog.close();
+  if (typeof briefDialog.close === 'function') {
+    briefDialog.close();
+  } else {
+    briefDialog.removeAttribute('open');
+  }
   document.body.classList.remove('brief-open');
 };
 

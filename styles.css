@@ -267,7 +267,12 @@ h1{font-size:clamp(76px,9.45vw,136px)}
 }
 
 @media(max-width:520px){
-  .nav-pill>.nav-cta{display:none}
+  .nav-wrap{padding:0 8px}
+  .nav-pill{gap:6px;padding:7px 8px 7px 12px}
+  .nav-pill>.brand{font-size:14px}
+  .nav-whatsapp{height:36px!important;padding:0 8px!important;gap:5px;font-size:10.5px}
+  .nav-whatsapp svg{width:14px;height:14px}
+  .nav-pill>.nav-cta{display:inline-flex;height:38px;margin-left:0;padding:0 10px;font-size:10.5px;gap:5px}
 }
 
 /* One sourcing service instead of a scattered multi-platform workflow */
@@ -367,6 +372,17 @@ h1{font-size:clamp(76px,9.45vw,136px)}
 .hero-float{position:absolute;left:var(--x);top:var(--y);display:block;width:44px;height:44px;color:var(--blue-deep);opacity:calc(var(--o,.18) + .28);transform:scale(var(--s));animation:heroDrift var(--duration) ease-in-out var(--delay) infinite alternate;will-change:transform}
 .hero-float svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round}
 .hero-float:nth-child(6),.hero-float:nth-child(7),.hero-float:nth-child(10),.hero-float:nth-child(12),.hero-float:nth-child(13),.hero-float:nth-child(16),.hero-float:nth-child(22),.hero-float:nth-child(23),.hero-float:nth-child(25),.hero-float:nth-child(26),.hero-float:nth-child(28){display:none}
+
+/* Keep the full-screen hero balanced on 1080p laptops with scaled displays. */
+@media (min-width:801px) and (max-height:800px){
+  .hero{padding-top:100px;padding-bottom:32px}
+  .hero h1{font-size:clamp(74px,12vh,94px)}
+  .hero-line{line-height:1.02}
+  .hero-sub{max-width:650px;margin-top:24px;font-size:16px;line-height:1.55}
+  .hero-actions{margin-top:24px}
+  .hero-cta{height:56px;padding:0 27px;font-size:14px}
+  .hero-particles{inset:70px 0 0}
+}
 
 @keyframes heroDrift{
   0%{transform:translate3d(-5px,7px,0) rotate(-3deg) scale(var(--s))}

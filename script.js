@@ -43,6 +43,8 @@ const briefDialog = document.getElementById('brief-dialog');
 const briefForm = document.getElementById('brief-form');
 const briefClose = briefDialog?.querySelector('.brief-close');
 const briefSubmit = briefForm?.querySelector('.brief-submit');
+const chatBriefTrigger = document.querySelector('[data-chat-brief]');
+const mobileBriefQuery = window.matchMedia('(max-width: 600px)');
 
 // Keep the brief available for later, but send every CTA straight to WhatsApp while disabled.
 const BRIEF_ENABLED = false;
@@ -76,6 +78,35 @@ document.querySelectorAll('[data-brief-cta]').forEach((cta) => {
   });
 });
 
+const openChatBrief = () => {
+  if (!briefDialog) return;
+
+  if (briefDialog.open) {
+    closeBrief();
+    return;
+  }
+
+  const isMobile = mobileBriefQuery.matches;
+  briefDialog.classList.toggle('chat-mobile-mode', isMobile);
+  briefDialog.classList.toggle('chat-widget-mode', !isMobile);
+  chatBriefTrigger?.setAttribute('aria-expanded', 'true');
+  document.body.classList.add('chat-brief-open');
+
+  if (isMobile && typeof briefDialog.showModal === 'function') {
+    briefDialog.showModal();
+    document.body.classList.add('brief-open');
+  } else if (typeof briefDialog.show === 'function') {
+    briefDialog.show();
+  } else {
+    briefDialog.setAttribute('open', '');
+  }
+};
+
+chatBriefTrigger?.addEventListener('click', (event) => {
+  event.preventDefault();
+  openChatBrief();
+});
+
 const closeBrief = () => {
   if (typeof briefDialog.close === 'function') {
     briefDialog.close();
@@ -86,6 +117,9 @@ const closeBrief = () => {
     history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
   }
   document.body.classList.remove('brief-open');
+  document.body.classList.remove('chat-brief-open');
+  briefDialog?.classList.remove('chat-mobile-mode', 'chat-widget-mode');
+  chatBriefTrigger?.setAttribute('aria-expanded', 'false');
 };
 
 briefClose?.addEventListener('click', (event) => {
@@ -95,7 +129,21 @@ briefClose?.addEventListener('click', (event) => {
 briefDialog?.addEventListener('click', (event) => {
   if (event.target === briefDialog) closeBrief();
 });
-briefDialog?.addEventListener('close', () => document.body.classList.remove('brief-open'));
+briefDialog?.addEventListener('close', () => {
+  document.body.classList.remove('brief-open', 'chat-brief-open');
+  briefDialog.classList.remove('chat-mobile-mode', 'chat-widget-mode');
+  chatBriefTrigger?.setAttribute('aria-expanded', 'false');
+});
+
+document.addEventListener('click', (event) => {
+  if (!briefDialog?.open || mobileBriefQuery.matches) return;
+  if (briefDialog.contains(event.target) || chatBriefTrigger?.contains(event.target)) return;
+  closeBrief();
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && briefDialog?.open && !mobileBriefQuery.matches) closeBrief();
+});
 
 briefForm?.addEventListener('submit', (event) => {
   event.preventDefault();

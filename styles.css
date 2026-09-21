@@ -474,6 +474,31 @@ body.brief-open{overflow:hidden}
   .brief-heading h2{margin-top:0;font-size:27px}
 }
 
+/* The brief is an expanded chat panel on desktop and a full-screen sheet on mobile. */
+@media(min-width:601px){
+  .brief-dialog.chat-widget-mode[open]{inset:auto 26px 102px auto;width:min(480px,calc(100vw - 40px));max-height:calc(100svh - 130px);margin:0;border:1px solid #dce7ee;border-radius:26px;box-shadow:0 24px 70px rgba(24,39,55,.2);animation:chatPanelIn .24s cubic-bezier(.22,.75,.25,1) both}
+  .chat-widget-mode .brief-heading{padding:34px 38px 21px}
+  .chat-widget-mode .brief-heading>span{padding:7px 9px;font-size:8px}
+  .chat-widget-mode .brief-heading h2{margin:17px 42px 0 0;font-size:38px}
+  .chat-widget-mode .brief-form{gap:15px;padding:0 38px 34px}
+  .chat-widget-mode .brief-form label{gap:7px;font-size:11px}
+  .chat-widget-mode .brief-form input,.chat-widget-mode .brief-form select{height:48px;padding:0 14px;font-size:13px;border-radius:12px}
+  .chat-widget-mode .brief-submit{height:54px;font-size:13px}
+  .chat-widget-mode .brief-close{top:15px;right:15px}
+  body.chat-brief-open .chat-float{box-shadow:0 0 0 7px rgba(21,148,223,.12),0 14px 34px rgba(21,148,223,.25)}
+  body.chat-brief-open .chat-copy{display:none}
+}
+
+@media(max-width:600px){
+  .brief-dialog.chat-mobile-mode[open]{inset:0;width:100vw;max-width:none;height:100svh;max-height:100svh;margin:0;border-radius:0}
+  .chat-mobile-mode .brief-heading{padding-top:54px}
+}
+
+@keyframes chatPanelIn{
+  from{opacity:0;transform:translateY(12px) scale(.97);transform-origin:bottom right}
+  to{opacity:1;transform:none;transform-origin:bottom right}
+}
+
 /* Recruitment website services page */
 .service-kicker{margin:0;color:var(--blue-deep);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
 .service-hero{position:relative;display:flex;width:100%;min-height:100svh;padding:145px 24px 78px;align-items:center;justify-content:center;text-align:center;overflow:hidden}

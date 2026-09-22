@@ -48,7 +48,7 @@ const mobileBriefQuery = window.matchMedia('(max-width: 600px)');
 
 // Keep the brief available for later, but send every CTA straight to WhatsApp while disabled.
 const BRIEF_ENABLED = false;
-const directWhatsAppUrl = `https://api.whatsapp.com/send?phone=447345208104&text=${encodeURIComponent("Hi, I'd like to get my first 10 CVs free.")}`;
+const directWhatsAppUrl = `https://api.whatsapp.com/send?phone=447345208104&text=${encodeURIComponent("Hi, I'd like to get my first 5 CVs free.")}`;
 
 const updateBriefSubmitLabel = () => {
   const hasDetails = [...new FormData(briefForm).values()].some((value) => String(value).trim());
@@ -149,7 +149,7 @@ briefForm?.addEventListener('submit', (event) => {
   event.preventDefault();
   const data = new FormData(briefForm);
   const hasDetails = [...data.values()].some((value) => String(value).trim());
-  const lines = ["Hi, I'd like to get my first 10 CVs free."];
+  const lines = ["Hi, I'd like to get my first 5 CVs free."];
 
   if (hasDetails) {
     lines.push(

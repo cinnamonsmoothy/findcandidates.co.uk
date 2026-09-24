@@ -4,6 +4,9 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // point those same links at their index files so local navigation still works.
 if (window.location.protocol === 'file:') {
   document.querySelectorAll('a[href="websites/"]').forEach((link) => link.setAttribute('href', 'websites/index.html'));
+  document.querySelectorAll('a[href="nhs-leads/"]').forEach((link) => link.setAttribute('href', 'nhs-leads/index.html'));
+  document.querySelectorAll('a[href="../nhs-leads/"]').forEach((link) => link.setAttribute('href', '../nhs-leads/index.html'));
+  document.querySelectorAll('a[href="../websites/"]').forEach((link) => link.setAttribute('href', '../websites/index.html'));
   document.querySelectorAll('a[href="../"]').forEach((link) => link.setAttribute('href', '../index.html'));
   document.querySelectorAll('a[href="./"]').forEach((link) => link.setAttribute('href', 'index.html'));
 }

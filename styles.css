@@ -484,7 +484,22 @@ h1{font-size:clamp(76px,9.45vw,136px)}
 .services-dropdown small{color:#84909c;font-size:10px;font-weight:500}
 
 @media(max-width:800px){
-  .services-menu{display:none}
+  .nav-pill{position:relative}
+  .nav-pill>.nav-cta{display:none}
+  .nav-links{gap:8px}
+  .services-menu{position:static;display:flex}
+  .services-trigger{height:38px;padding:0 12px;background:#f4f8fb;color:var(--ink-strong);font-size:12px}
+  .services-menu::after{display:none}
+  .services-dropdown{top:calc(100% + 10px);right:8px;left:8px;width:auto;transform:none;border-radius:18px;box-shadow:0 18px 42px rgba(31,55,76,.16)}
+  .services-menu:not(.is-open)>.services-dropdown{display:none}
+  .services-menu.is-open>.services-dropdown{display:block}
+  .services-menu.is-open .services-trigger{background:var(--blue-soft);color:var(--ink-strong)}
+  .services-menu.is-open .services-trigger svg{transform:rotate(180deg)}
+  .services-dropdown a{padding:13px 14px}
+}
+
+@media(max-width:600px){
+  .nav-whatsapp{display:none}
 }
 
 /* Full-screen editorial hero */

@@ -42,6 +42,40 @@ document.querySelectorAll('details').forEach((item) => {
   });
 });
 
+// The services menu uses hover on desktop and an explicit, accessible toggle on touch screens.
+document.querySelectorAll('.services-menu').forEach((menu) => {
+  const trigger = menu.querySelector('.services-trigger');
+
+  trigger?.setAttribute('aria-expanded', 'false');
+  trigger?.addEventListener('click', () => {
+    const willOpen = !menu.classList.contains('is-open');
+    document.querySelectorAll('.services-menu.is-open').forEach((other) => {
+      other.classList.remove('is-open');
+      other.querySelector('.services-trigger')?.setAttribute('aria-expanded', 'false');
+    });
+    menu.classList.toggle('is-open', willOpen);
+    trigger.setAttribute('aria-expanded', String(willOpen));
+  });
+});
+
+document.addEventListener('click', (event) => {
+  document.querySelectorAll('.services-menu.is-open').forEach((menu) => {
+    if (menu.contains(event.target)) return;
+    menu.classList.remove('is-open');
+    menu.querySelector('.services-trigger')?.setAttribute('aria-expanded', 'false');
+  });
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape') return;
+  document.querySelectorAll('.services-menu.is-open').forEach((menu) => {
+    menu.classList.remove('is-open');
+    const trigger = menu.querySelector('.services-trigger');
+    trigger?.setAttribute('aria-expanded', 'false');
+    trigger?.focus();
+  });
+});
+
 const briefDialog = document.getElementById('brief-dialog');
 const briefForm = document.getElementById('brief-form');
 const briefClose = briefDialog?.querySelector('.brief-close');
